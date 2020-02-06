@@ -25,7 +25,7 @@ SECRET_KEY = 'm$r-@qt*tedsbpbt5(*+5tbr%#m47$)7=rqv7^&6_pe8p!53m9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.12.96.59']
+ALLOWED_HOSTS = ['3.12.109.197']
 
 
 # Application definition
@@ -139,7 +139,8 @@ MEDIA_URL = '/media/'
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080',
-    'http://127.0.0.1:8080'
+    'http://127.0.0.1:8080',
+    'https://ampla.guilhermeddc.com.br/'
 ]
 
 REST_FRAMEWORK = {

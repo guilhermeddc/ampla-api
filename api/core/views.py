@@ -1,5 +1,8 @@
 from django.core.mail import EmailMessage
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from .models import Category, Product, ProductComments, Provider
@@ -15,16 +18,22 @@ class ProductCommentsViewSet(viewsets.ModelViewSet):
 
 class ProviderViewSet(viewsets.ModelViewSet):
     queryset = Provider.objects.all()
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
     serializer_class = ProviderSerializer
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
     serializer_class = CategorySerializer
 
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('-id')
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
     serializer_class = ProductSerializer
     filter_backends = [SearchFilter,]
     search_fields = ['name', 'description', 'category__name', 'provider__name']
